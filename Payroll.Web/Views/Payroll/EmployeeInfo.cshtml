@@ -1,0 +1,120 @@
+﻿@model EmployeeModel
+<h2>Employee Info</h2>
+@Html.ValidationSummary()
+<div id="message" class="alert"></div>
+@using (Html.BeginForm())
+{
+    <div class="form-row">
+        <div class="col-sm-3 m-2">
+            @Html.TextBoxFor(m => m.FirstName, new
+       {
+           @class = "form-control",
+           name = "firstName",
+           id = "firstName",
+           placeholder = "First name",
+               required = "required"
+       })
+        </div>
+        <div class="col-sm-3 m-2">
+            @Html.TextBoxFor(m => m.LastName, new
+       {
+           @class = "form-control",
+           name = "lastName",
+           id = "lastName",
+           placeholder = "Last name",
+               required = "required"
+       })
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-sm-3 m-2">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">$</span>
+                </div>
+                @Html.TextBoxFor(m => m.AnnualSalary, new
+           {
+               type = "number",
+               @class = "form-control",
+               placeholder = "Annual Salary",
+               name = "annualSalary",
+               id = "annualSalary",
+               required = "required"
+           })
+                <div class="input-group-append">
+                    <span class="input-group-text">.00</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3 m-2">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">%</span>
+                </div>
+                @Html.TextBoxFor(m => m.SuperRate, new
+           {
+               type = "number",
+               @class = "form-control",
+               placeholder = "Super Rate",
+               name = "superRate",
+               step = "0.01",
+               id = "superRate",
+               required = "required"
+           })
+            </div>
+        </div>
+
+    </div>
+    <div class="form-row">
+        <div class="col-sm-3 m-2">
+            @Html.TextBoxFor(m => m.Month, new
+       {
+           @class = "form-control",
+           type = "month",
+           min="2017-07",
+           name = "month",
+           id = "month",
+           placeholder = "Month",
+               required = "required"
+       })
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-sm-6 m-2 border-0 text-right">
+            <button class="btn btn-primary" id="generatePaySlip" type="submit">Generate Payslip</button>
+        </div>
+    </div>
+}
+
+
+
+@section scripts
+{
+    <script>
+
+        $(document)
+            .ready(function () {
+
+                $.validator.setDefaults({
+                    highlight: function (element) {
+                        $(element).closest('.form-group').addClass('has-error');
+                    },
+                    unhighlight: function (element) {
+                        $(element).closest('.form-group').removeClass('has-error');
+                    },
+                    errorElement: 'span',
+                    errorClass: 'help-block',
+                    errorPlacement: function (error, element) {
+                        if (element.parent('.input-group').length) {
+                            error.insertAfter(element.parent());
+                        } else {
+                            error.insertAfter(element);
+                        }
+                    }
+                });
+            });
+
+    </script>
+}
+
+

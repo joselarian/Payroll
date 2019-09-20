@@ -1,0 +1,36 @@
+﻿@model PayModel
+@using (Html.BeginForm())
+{
+    <div class="col-md-6 m-2" id="paySlip">
+        <h2>Payslip</h2>
+        <table class="table table-striped ">
+            <tbody>
+                <tr>
+                    <th scope="row">Employee Name</th>
+                    <td>@Html.DisplayFor(m => m.EmployeeName)</td>
+                </tr>
+                <tr>
+                    <th scope="row">Pay Period</th>
+                    <td>@Html.DisplayFor(m => m.PayPeriod)</td>
+                </tr>
+                <tr>
+                    <th scope="row">Gross Income</th>
+                    <td>@Html.DisplayFor(m => m.GrossIncome)</td>
+                </tr>
+                <tr>
+                    <th scope="row">Income Tax</th>
+                    <td>@Html.DisplayFor(m => m.IncomeTax)</td>
+                </tr>
+                <tr>
+                    <th scope="row">Net Income</th>
+                    <td>@Html.DisplayFor(m => m.NetIncome)</td>
+                </tr>
+                <tr>
+                    <th scope="row">Super</th>
+                    <td>@Html.DisplayFor(m => m.SuperAmount)</td>
+                </tr>
+            </tbody>
+        </table>       
+    </div>
+}
+
